@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <iwdall>
+            <label>IWD Extensions</label>
+            <sort_order>100</sort_order>
+            <class>iwd-block</class>
+        </iwdall>
+    </tabs>
+    <sections>
+        <iwd_ces translate="label" module="iwd_ces">
+            <label>Customer Engagement Suite</label>
+            <tab>iwdall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general_extension>
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <version>
+                            <label>Version</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_model>iwd_ces/system_config_form_fieldset_extensions</frontend_model>
+                            <comment><![CDATA[]]></comment>
+                        </version>
+                        <link>
+                            <label>Documentation</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <frontend_model>iwd_ces/system_config_form_fieldset_documentations</frontend_model>
+                        </link>
+                        <enabled translate="label">
+                            <label>Enable View All &amp; Single Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Allow user to view page with all QA, Requests or Reviews for one product. Also allow user to view a single QA, Request or Review.]]></comment>
+                        </enabled>
+                    </fields>
+                </general_extension>
+                <widget>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <label>Options</label>
+                    <fields>
+                        <questions_answers type="group" translate="label">
+                            <label>Questions &amp; Answers</label>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <fields>
+                                <show_questions_answers translate="label">
+                                    <label>Enable</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment><![CDATA[]]></comment>
+                                </show_questions_answers>
+                                <qa_widget_id translate="label">
+                                    <label>ID</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <validate>required-entry</validate>
+                                    <comment><![CDATA[]]></comment>
+                                </qa_widget_id>
+                            </fields>
+                        </questions_answers>
+                        <feature_requests type="group" translate="label">
+                            <label>Requested Features</label>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <fields>
+                                <show_feature_request translate="label">
+                                    <label>Enable</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment><![CDATA[]]></comment>
+                                </show_feature_request>
+                                <feature_request_widget_id translate="label">
+                                    <label>ID</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <validate>required-entry</validate>
+                                    <comment><![CDATA[]]></comment>
+                                </feature_request_widget_id>
+                            </fields>
+                        </feature_requests>
+                        <reviews type="group" translate="label">
+                            <label>Reviews</label>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <fields>
+                                <show_reviews translate="label">
+                                    <label>Enable</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment><![CDATA[]]></comment>
+                                </show_reviews>
+                                <reviews_widget_id translate="label">
+                                    <label>ID</label>
+                                    <frontend_type>text</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <validate>required-entry</validate>
+                                    <comment><![CDATA[]]></comment>
+                                </reviews_widget_id>
+                            </fields>
+                        </reviews>
+                        <other type="group" translate="label">
+                            <label>Other</label>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <fields>
+                                <show_breadcrumbs translate="label">
+                                    <label>Show breadcrumbs</label>
+                                    <frontend_type>select</frontend_type>
+                                    <source_model>adminhtml/system_config_source_yesno</source_model>
+                                    <sort_order>10</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <comment><![CDATA[]]></comment>
+                                </show_breadcrumbs>
+
+                                <import_reviews>
+                                    <label>Use existing Magento Reviews</label>
+                                    <frontend_type>button</frontend_type>
+                                    <sort_order>20</sort_order>
+                                    <show_in_default>1</show_in_default>
+                                    <show_in_website>1</show_in_website>
+                                    <show_in_store>1</show_in_store>
+                                    <frontend_model>iwd_ces/system_config_form_fieldset_import_button</frontend_model>
+                                    <comment><![CDATA[]]></comment>
+                                </import_reviews>
+
+                            </fields>
+                        </other>
+                    </fields>
+                </widget>
+            </groups>
+        </iwd_ces>
+    </sections>
+</config>

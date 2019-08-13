@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/1993",
+    "type": "magento-module",
+    "license": "MIT-license",
+    "homepage": "",
+    "description": "IWD CES",
+    "authors": [
+    {
+        "name": "Vlad",
+        "email": "info@iwdagency.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

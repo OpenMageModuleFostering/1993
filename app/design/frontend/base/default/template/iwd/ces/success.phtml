@@ -1,0 +1,39 @@
+<?php //if(Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_GENERAL_ENABLED)): ?>
+
+<?php if (Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_REVIEWS)): ?>
+    <?php $base = Mage::helper('iwd_ces/settings')->getDomain(); ?>
+    <script>
+        var xhr = new XMLHttpRequest(),
+            orderId = '<?php echo $this->getOrderId() ?>',
+            orderAmount = '<?php echo $this->getOrderAmount() ?>',
+            orderCurrency = '<?php echo $this->getOrderCurrency() ?>',
+            userEmail = '<?php echo $this->getUsersEmail() ?>',
+            userName = '<?php echo $this->getUsersName() ?>',
+            storeName = '<?php echo $this->getStoreName() ?>',
+            productSku = '<?php echo $this->getProductSku() ?>',
+            widgetId = '<?php echo Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_REVIEWS_WIDGET_ID) ?>',
+            url = 'https://<?php echo $base ?>/customer-engagement-suite/api/users/verify_buyer';
+
+        url += '?order_id=' + orderId;
+        url += '&order_amount=' + orderAmount;
+        url += '&order_currency=' + orderCurrency;
+        url += '&user_name=' + userName;
+        url += '&user_email=' + userEmail;
+        url += '&store_name=' + storeName;
+        url += '&sku=' + productSku;
+        url += '&widget_id=' + widgetId;
+
+        xhr.open('GET', url, true);
+
+        xhr.send();
+
+        xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+
+            if (this.status != 200) {
+                console.error('Error: ' + (this.status ? this.statusText : 'undefined'));
+                return;
+            }
+        }
+    </script>
+<?php endif; ?>

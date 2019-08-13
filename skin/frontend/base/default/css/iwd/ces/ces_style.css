@@ -1,0 +1,248 @@
+.block {
+    display: block;
+}
+.ces-product-wrapper {
+    margin-top: 46px;
+}
+.ces-product-wrapper .product-info {
+    padding: 0;
+    margin: 0 50px;
+    font-family: "Open Sans";
+    height: auto;
+}
+.ces-product-wrapper .product-info .product-img-box {
+    width: 195px;
+    max-width: 185px; /* 195px; */
+    float: left;
+}
+.ces-product-wrapper .product-info .product-shop {
+    /*float: left;*/
+}
+.ces-product-wrapper .product-info .product-image {
+    display: block;
+    width: 142px; /* 150px */
+    height: 142px; /* 150px */
+}
+.ces-product-wrapper .product-info .all-questions {
+    border: 1px solid #e2e2e2 !important;
+    padding: 8px 25px 7px !important;
+    /* padding: 12px 25px 14px !important; */
+    font-size: 16px !important;
+    margin: 42px 25px 27px 3px;
+    /*margin: 22px 25px 27px 3px;*/
+    float: left !important;
+    height: 23px !important;
+    /*left: 245px;*/
+    box-sizing: content-box;
+}
+.ces-product-wrapper .product-info .all-questions .text {
+    color: #008a99;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.ces-product-wrapper .product-info .all-questions:hover {
+    background: #008a99;
+}
+.ces-product-wrapper .product-info .all-questions:hover .text {
+    color: white;
+    text-decoration: none;
+}
+.ces-product-wrapper .product-info .clear {
+    clear: both;
+}
+.ces-product-wrapper .product-info .product-shop .product-name {
+    color: #2693a1;
+    font-size: 22px;
+    text-transform: uppercase;
+    position: relative;
+    top: -8px;
+    text-decoration: none;
+}
+.ces-product-wrapper .product-info .product-shop .price {
+    position: relative;
+    color: #000000;
+    font-size: 22px;
+    letter-spacing: -1px;
+    top: 2px;
+}
+.ces-product-wrapper .product-info .product-shop .old {
+    /*text-decoration: line-through;*/
+    margin-right: 6px;
+}
+.ces-product-wrapper .product-info .product-shop .old::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    background: black;
+}
+.ces-product-wrapper .upper {
+    clear: both;
+    text-align: center;
+    padding-bottom: 21px; /* 50px; */
+    margin-bottom: -6px;
+    border-bottom: 1px #b0b0b0 solid;
+}
+.ces-product-wrapper .view-all, .ces-widget-wrapper .ces-widget-header .header {
+    font-size: 31.88px;
+    text-align: center;
+    font-family: "Open Sans";
+    width: 100%;
+    margin: 36px auto 0;
+    right: 30px;
+    position: relative;
+    top: 6px;
+    color: #000000;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.ces-widget-wrapper {
+    width: 100%;
+}
+.ces-widget-wrapper .ces-widget-header .separator {
+    margin: 30px auto;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: grey;
+}
+.ces-all {
+    display: inline;
+    padding: 0 10px;
+    font-size: 15px;
+    color: #008a99;
+}
+.ces-text {
+    padding-left: 2px;
+}
+@media  (min-width: 678px) and (max-width: 900px) {
+    .product-info {
+        margin: 0 30px;
+    }
+    .product-info .all-questions {
+        left: 225px;
+    }
+    .view-all, .ces-widget-wrapper .ces-widget-header .header {
+        right: 0;
+    }
+    .upper {
+        padding-bottom: 49px;
+    }
+    .upper.reviews {
+        padding-bottom: 21px;
+    }
+}
+@media  (min-width: 768px) and (max-width: 956px) {
+    .ces-product-wrapper .product-info {
+        margin: 0 30px;
+    }
+    .ces-product-wrapper .product-info .all-questions.completed {
+        margin: 0;
+        margin-left: 188px;
+    }
+    .ces-product-wrapper .upper {
+        padding-bottom: 49px;
+    }
+    .ces-product-wrapper .upper.reviews {
+        padding-bottom: 21px;
+    }
+}
+@media  (min-width: 768px) and (max-width: 956px) {
+    .ces-product-wrapper .product-info {
+        margin: 0 30px;
+    }
+    .ces-product-wrapper .product-info .all-questions.completed {
+        margin: 0;
+        margin-left: 188px;
+    }
+    .ces-product-wrapper .upper {
+        padding-bottom: 49px;
+    }
+}
+@media  (max-width: 767px) {
+    .container {
+        width: 94%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .ces-product-wrapper .product-info {
+        margin: 0 15px;
+        padding: 0;
+    }
+    .ces-product-wrapper .product-info .product-img-box {
+        width: 90px;
+        height: 90px;
+        float: left;
+        margin-right: 28px;
+    }
+    .ces-product-wrapper .product-info .product-img-box > img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        padding: 0 22px 0 0px;
+    }
+    .ces-product-wrapper .product-info .product-shop .product-name {
+        top: -5px;
+        font-size: 15px;
+        margin-left: -5px;
+        line-height: 1.55;
+    }
+    .ces-product-wrapper .price {
+        font-size: 15px !important;
+    }
+    .ces-product-wrapper .product-info .product-shop .price {
+        right: 5px;
+        top: 8px;
+    }
+    .ces-product-wrapper .view-all, .ces-widget-wrapper .ces-widget-header .header {
+        right: 0;
+        top: 33px;
+        padding-bottom: 25px;
+    }
+    .ces-product-wrapper .product-info .all-questions {
+        position: relative;
+        padding: 7px 0 !important;
+        width: 100%;
+        left: 0;
+        text-align: center !important;
+        top: 73px;
+        max-width: 290px;
+        margin: auto !important;
+        float: none !important;
+        margin-bottom: 27px !important;
+    }
+    .ces-product-wrapper .upper {
+        border: none;
+        padding-bottom: 0px; /* 40px; */
+    }
+    .ces-all {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    /* .container {
+        width: 90%;
+        padding-left: 2%;
+        padding-right: 2%;
+    } */
+    .ces-product-wrapper .product-info .all-questions {
+        left: 0;
+        top: 25px;
+        max-width: 100%;
+        float: left !important;
+    }
+    .ces-product-wrapper .view-all, .ces-widget-wrapper .ces-widget-header .header {
+        top: -7px;
+        padding-bottom: 0;
+    }
+}
+.ces-widget-separator {
+    margin: 50px 0;
+    width: 100%;
+    border-top: 1px #000 solid;
+    display: block;
+}

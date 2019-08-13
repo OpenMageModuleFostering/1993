@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+
+    </menu>
+    <acl>
+        <resources>
+            <all>Allow everything</all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <iwd_ces translate="title" module="iwd_ces">
+                                        <title>IWD Ces</title>
+                                    </iwd_ces>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

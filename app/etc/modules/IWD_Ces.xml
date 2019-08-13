@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <IWD_Ces>
+            <active>true</active>
+            <codePool>community</codePool>
+        </IWD_Ces>
+    </modules>
+</config>

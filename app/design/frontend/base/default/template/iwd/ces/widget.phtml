@@ -1,0 +1,69 @@
+<?php //if(Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_GENERAL_ENABLED)): ?>
+    <?php $showQA = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_QUESTIONS_ANSWERS) ?>
+    <?php $showFR = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_FEATURE_REQUEST) ?>
+    <?php $showReviews = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_REVIEWS) ?>
+    <?php $isEnabled = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_GENERAL_ENABLED) ?>
+    <div class="ces-widget-wrapper">
+        <div class="ces-widget-header">
+            <?php if ($showQA): ?>
+                <div class="separator"></div>
+            <?php endif; ?>
+        </div>
+        <div class="ces-widget-content">
+            <?php $product = $this->getProduct() ?>
+            <?php $widget_id = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_QA_WIDGET_ID) ?>
+            <?php $domain = $this->getDomain() ?>
+            <?php if ($product): ?>
+                <?php
+                $base_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $this->getProductUrlStr();
+                //Building the batch data
+                $data['widget_id'] = "$widget_id";
+                if ($isEnabled) {
+                    $optionsArray = [
+                        'base_url' =>  $base_url,
+                        'view_all_url' => $base_url . '/' . $this->getFilter(),
+                        'product_alias' => $product->getId(),
+                    ];
+                    $data = array_merge($data, $optionsArray);
+                }
+
+                ?>
+                <?php if ($showQA): ?>
+                    <?php
+                    $widget = $this->getWidgetBody($data);
+                    echo isset($widget['widget']) ? $widget['widget'] : ''; ?>
+                <?php endif; ?>
+                <?php if ($showFR): ?>
+                    <div class="ces-widget-separator"></div>
+                    <?php
+                    $data['widget_id'] = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_FR_WIDGET_ID);
+                    if ($isEnabled) {
+                        $data['view_all_url'] = $base_url . '/feature-requests';
+                    }
+
+                    $widget = $this->getWidgetBody($data);
+                    echo isset($widget['widget']) ? $widget['widget'] : '';
+                    ?>
+                <?php endif; ?>
+                <?php if ($showReviews): ?>
+                    <?php
+                    $data['widget_id'] = Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_REVIEWS_WIDGET_ID);
+                    if ($isEnabled) {
+                        $optionsArray = [
+                            'view_all_url' => $base_url . '/reviews',
+                            'product_url' => $product->getProductUrl(),
+                            'base_url' => $base_url,
+                            'product_alias' => $product->getId(),
+                        ];
+                        $data = array_merge($data, $optionsArray);
+                    }
+                    $r_response = $this->getWidgetBody($data);
+
+                    echo isset($r_response['widget']) ? $r_response['widget'] : '';
+                    ?>
+                <?php endif; ?>
+
+            <?php endif; ?>
+        </div>
+    </div>
+<?php //endif; ?>

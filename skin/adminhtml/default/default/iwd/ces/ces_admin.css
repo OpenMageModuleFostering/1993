@@ -1,0 +1,12 @@
+#iwd_ces_widget .form-list {
+    width: 100%;
+}
+
+.blocked-button, .blocked-button:hover {
+    background: #7a7a7a;
+    background: -moz-linear-gradient(45deg, #7a7a7a 0%, #a0a0a0 100%);
+    background: -webkit-linear-gradient(45deg, #7a7a7a 0%,#a0a0a0 100%);
+    background: linear-gradient(45deg, #7a7a7a 0%,#a0a0a0 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7a7a7a', endColorstr='#a0a0a0',GradientType=1 );
+    border: none;
+}

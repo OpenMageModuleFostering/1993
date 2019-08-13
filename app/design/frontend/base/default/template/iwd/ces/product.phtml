@@ -1,0 +1,143 @@
+<?php //if(Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_GENERAL_ENABLED)): ?>
+    <?php $product = $this->getProduct(); ?>
+    <?php $filter = $this->getFilter(); ?>
+    <?php $type = $this->getWidgetType() ?>
+    <?php $count = $this->getCount($type); ?>
+    <?php $domain = $this->getDomain() ?>
+    <?php $base_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $this->getUrlKey() ?>
+
+    <div class="ces-product-wrapper product-wrapper" itemscope itemtype="http://schema.org/Product">
+        <?php if ($product && !empty($product)): ?>
+            <?php $price = $product->getPrice(); ?>
+            <?php $formatted = Mage::helper('core')->currency($price, true, false); ?>
+            <?php $product_url = $product->getProductUrl(); ?>
+            <div class="product-info">
+                <div class="product-img-box">
+                    <img class="product-image" src="<?php echo Mage::helper('catalog/image')->init($product, 'small_image'); ?>" itemprop="image" >
+                </div>
+                <div class="product-shop">
+                    <a class="product-name" href="<?php echo $product_url ?>">
+                        <span itemprop="name"> <?php echo $product->getName(); ?> </span>
+                    </a> <br/>
+                    <?php echo $this->getPriceHtml($product); ?>
+                </div>
+                    <?php if ($type == 'questions'): ?>
+                        <div class="block all-questions">
+                            <?php if ($filter == 'questions'): ?>
+                            <span class="text">
+                                    <?php echo isset($count) ? (string)$count : 0; ?>
+                                <?php if (isset($count) && $count == 1): ?>question<?php else: ?>questions<?php endif; ?>
+                                </span>
+                            <?php else: ?>
+                                <a class="text" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $this->getUrlKey() . '/questions' ?>">
+                                    View all questions (<?php echo isset($count) ? (string)$count : 0; ?>)
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php elseif ($type == 'requests'): ?>
+                            <?php  $all_href = $base_url . '/feature-requests'; ?>
+
+                            <?php if ($in_review_count = $this->getCount($type, 'in_review')): ?>
+                                <div class="block all-questions in-review">
+                                    <?php if ($filter == 'requests'): ?>
+                                        <span class="text">
+                                            <?php echo isset($in_review_count) ? (string)$in_review_count : 0; ?>
+                                            <?php echo 'IN REVIEW' ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <a class="text" href="<?php echo $all_href . '?status=IN_REVIEW' ?>">
+                                            <?php echo isset($in_review_count) ? (string)$in_review_count : 0; ?>
+                                            <?php echo 'IN REVIEW' ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($coming_soon_count = $this->getCount($type, 'coming_soon')): ?>
+                                <div class="block all-questions coming-soon">
+                                    <?php if ($filter == 'requests'): ?>
+                                        <span class="text">
+                                            <?php echo isset($coming_soon_count) ? (string)$coming_soon_count : 0; ?>
+
+                                            <?php echo 'COMING SOON' ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <a class="text" href="<?php echo $all_href . '?status=COMING_SOON' ?>">
+                                            <?php echo isset($coming_soon_count) ? (string)$coming_soon_count : 0; ?>
+
+                                            <?php echo 'COMING SOON' ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($completed_count = $this->getCount($type, 'completed')): ?>
+                                <div class="block all-questions completed">
+                                    <?php if ($filter == 'requests'): ?>
+                                    <span class="text">
+                                        <?php echo isset($completed_count) ? (string)$completed_count : 0; ?>
+                                        <?php echo 'COMPLETED' ?>
+                                    </span>
+                                    <?php else : ?>
+                                        <a class="text" href="<?php echo $all_href . '?status=COMPLETED' ?>">
+                                            <?php echo isset($completed_count) ? (string)$completed_count : 0; ?>
+                                            <?php echo 'COMPLETED' ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                    <?php elseif ($type == 'reviews'): ?>
+                        <div class="block all-questions" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                            <meta itemprop="ratingValue" content = "<?php echo $this->getReviewsRating() ?>">
+                            <meta itemprop="reviewCount" content = "<?php echo $count ?>">
+
+                            <?php if ($filter == 'reviews'): ?>
+                                <span class="text">
+                                    <?php echo isset($count) ? (string)$count : 0; ?>
+                                    <?php if (isset($count) && $count == 1): ?>review<?php else: ?>reviews<?php endif; ?>
+                                </span>
+                            <?php else: ?>
+                                <a class="text" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . $this->getUrlKey() . '/reviews' ?>">
+                                    View all reviews (<?php echo isset($count) ? (string)$count : 0; ?>)
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+
+                <div class="clear"></div>
+            </div>
+        <?php if ($this->getWidgetId()) : ?>
+            <div class="upper <?php echo (string)$type; ?>"></div>
+            <?php
+            $data = [
+                'widget_id' => $this->getWidgetId(),
+                'base_url' => $base_url,
+                'question_id' => ($filter == 'questions' || $filter == 'requests' || $filter == 'reviews') ? null : $filter,
+                'product_url' => $product_url,
+                'pagination' => true,
+                'per_page' => $this->getPerPage(),
+                'page' => $this->getPage() ? $this->getPage() : 1,
+                'default_status' => $type == 'requests' ? $this->getFeatureRequestStatus() : null,
+                'product_url' => $product->getProductUrl(),
+//                'show_header' => false, // just for reviews widget for now
+            ];
+
+            if ($type == 'reviews' and $filter == $type) {
+                $data['header_text'] = 'View all reviews';
+            }
+
+            if ($filter == 'requests') {
+                $filter = 'feature-requests';
+            }
+
+            $data['pagination_url'] = $base_url . '/' . $filter;
+
+            $response = $this->getWidgetBody($data);
+            echo isset($response['widget']) ? $response['widget'] : '';
+            ?>
+            <?php endif; ?>
+
+        <?php else: ?>
+            <p>Product not found</p>
+        <?php endif; ?>
+    </div>
+<?php //endif; ?>

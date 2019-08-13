@@ -1,0 +1,61 @@
+<?php if (Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_REVIEWS)): ?>
+    <a href="#ces-reviews" class="ces-all-reviews ces-all" itemprop="review" itemscope="" itemtype="http://data-vocabulary.org/Review-aggregate">
+        <?php $product = $this->getProduct() ?>
+        <?php $ratingsValue = 0; ?>
+        <?php $reviewsCount = $this->getCount("reviews"); ?>
+        <?php $reviewsRating = $this->getReviewsRating() ?>
+        <?php $ratings = $this->mathRating($reviewsRating, false, 5) ?>
+
+        <?php foreach ($ratings as $key => $value): ?>
+            <?php if ($value == '1'): ?>
+                <?php $ratingsValue++; ?>
+                <i class="psw-fa psw-fa-star" aria-hidden="true"></i>
+            <?php elseif ($value == '1/2'): ?>
+                <?php $ratingsValue = $ratingsValue + 0.5; ?>
+                <i class="psw-fa psw-fa-star-half-o" aria-hidden="true"></i>
+            <?php else: ?>
+                <i class="psw-fa psw-fa-star-o" aria-hidden="true"></i>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <span class="ces-text">
+            <?php if ($reviewsCount > 0): ?>
+                <meta itemprop="itemreviewed" content="<?php echo $product->getName(); ?>">
+                <meta itemprop="rating" content="<?php echo $ratingsValue; ?>">
+                <meta itemprop="count" content="<?php echo $reviewsCount ?>">
+                <?php echo $reviewsCount ?>
+                <?php echo $reviewsCount != 1 ? $this->__('Reviews') : $this->__('Review'); ?>
+            <?php else: ?>
+                <?php echo $this->__('Add a Review') ?>
+            <?php endif; ?>
+        </span>
+
+    </a>
+<?php endif; ?>
+<?php if (Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_QUESTIONS_ANSWERS)): ?>
+<a href="#ces-product-questions" class="ces-all-questions ces-all">
+    <?php $questionsCount = $this->getCount("questions", 'answered'); ?>
+    <i class="psw-fa psw-fa-question-circle" aria-hidden="true"></i>
+    <span class="ces-text">
+        <?php if ($questionsCount > 0) : ?>
+            <?php echo $questionsCount ?>
+            <?php echo $questionsCount != 1 ? $this->__('Answers') : $this->__('Answer'); ?>
+        <?php else: ?>
+            <?php echo $this->__('Ask a Question') ?>
+        <?php endif; ?>
+    </span>
+</a>
+<?php endif; ?>
+<?php if (Mage::getStoreConfig(IWD_Ces_Helper_Settings::XML_PATH_SHOW_FEATURE_REQUEST)): ?>
+<a href="#ces-requests" class="ces-all-requests ces-all">
+    <?php $requestsCount = $this->getCount("requests"); ?>
+    <i class="psw-fa psw-fa-commenting" aria-hidden="true"></i>
+    <span class="ces-text">
+        <?php if ($requestsCount > 0) : ?>
+            <?php echo $requestsCount ?>
+            <?php echo $requestsCount != 1 ? $this->__('Requests') : $this->__('Request'); ?>
+        <?php else: ?>
+            <?php echo $this->__('Request a Feature') ?>
+        <?php endif ?>
+    </span>
+</a>
+<?php endif; ?>
